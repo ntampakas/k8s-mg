@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.26.0 (40646f47)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: leader-testnet-geth
+  name: leader-testnet-geth
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: leader-testnet-geth
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.26.0 (40646f47)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: leader-testnet-geth
+    spec:
+      containers:
+        - args:
+            - /host/l2-genesis-template.json
+            - /host/l2-genesis-generated.json
+            - --gcmode
+            - archive
+            - --networkid
+            - "99"
+            - --unlock
+            - "$(MINER_ADDRESS)"
+            - --password
+            - /dev/null
+            - --miner.gaslimit
+            - "10000000"
+            - --nodekeyhex
+            - abebb96d7d9bbc99730439f230afd0008c0e0cb93eafb6874fecb256572252a4
+          command:
+            - /host/init.sh
+          env:
+          - name: MINER_PRIV_KEY
+            valueFrom:
+              secretKeyRef:
+                name: leader-testnet-geth-secrets
+                key: miner_priv_key
+          - name: MINER_ADDRESS
+            valueFrom:
+              secretKeyRef:
+                name: leader-testnet-geth-secrets
+                key: miner_address
+          image: ghcr.io/appliedzkp/go-ethereum:latest
+          name: leader-testnet-geth
+          ports:
+            - containerPort: 30303
+          resources: {}
+          volumeMounts:
+            - mountPath: /root
+              name: leader-testnet-geth
+            - mountPath: /host
+              name: persistent-storage-efs
+      restartPolicy: Always
+      volumes:
+        - name: leader-testnet-geth
+          persistentVolumeClaim:
+            claimName: leader-testnet-geth
+        - name: persistent-storage-efs
+          persistentVolumeClaim:
+            claimName: efs-claim
+status: {}
