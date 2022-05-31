@@ -13,7 +13,7 @@
    - Upload all testnet files to EFS
      F.x.:
      ```
-     kubectl apply -f zkevm-chain/efs
+     root@lptp:/home/lptp/repos/k8s-mg# kubectl apply -f zkevm-chain/efs
      root@lptp:/home/lptp/repos/k8s-mg# kubectl apply -f aux/efs-pod.yaml
      root@lptp:/home/lptp/repos/k8s-mg# kubectl get pods
      NAME      READY   STATUS    RESTARTS   AGE
@@ -28,5 +28,5 @@
 
 ## Deploy zkevm-chain
    ```
-   kubectl apply -f zkevm-chain/services/
+   root@lptp:/home/lptp/repos/k8s-mg# kubectl apply -f zkevm-chain/services/
    ```
