@@ -30,7 +30,7 @@ spec:
               value: '[::]:8545'
             - name: PARAMS_PATH
               value: /host/params
-          image: ghcr.io/appliedzkp/zkevm-chain/prover:latest
+          image: ghcr.io/privacy-scaling-explorations/zkevm-chain/prover:latest
           name: prover-rpcd
           resources: {}
           volumeMounts:

@@ -49,7 +49,8 @@ spec:
               value: http://prover-rpcd:8545
             - name: RPC_SERVER_NODES
               value: server-testnet-geth:8545
-          image: ghcr.io/appliedzkp/zkevm-chain/coordinator:latest
+          image: ghcr.io/privacy-scaling-explorations/zkevm-chain/coordinator:latest
+          #image: public.ecr.aws/s1x7c1c0/coordinator:latest
           name: coordinator
           resources: {}
           volumeMounts:

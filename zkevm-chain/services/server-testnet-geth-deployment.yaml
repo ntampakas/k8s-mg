@@ -33,7 +33,7 @@ spec:
           env:
             - name: BOOTNODE
               value: enode://f28f5a7706e5aec836f3136feb7d5e7264a7f0da04ac4984f0ff2421ee1dd2b135894cf0d4f5ff8c412442b95b9bb0780a9c8a8c64de2d4a8c458586fdb20829@leader-testnet-geth:30303
-          image: ghcr.io/appliedzkp/go-ethereum:latest
+          image: ghcr.io/privacy-scaling-explorations/go-ethereum:latest
           name: server-testnet-geth
           resources: {}
           volumeMounts:
