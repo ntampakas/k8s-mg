@@ -13,7 +13,6 @@
    - Upload all testnet files to EFS
      F.x.:
      ```
-     # kubectl apply -f zkevm-chain/efs
      # kubectl apply -f aux/efs-pod.yaml
      # kubectl get pods
      NAME      READY   STATUS    RESTARTS   AGE
