@@ -30,7 +30,7 @@
    # kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
    # kubectl get deployment metrics-server -n kube-system
    NAME             READY   UP-TO-DATE   AVAILABLE   AGE
-   metrics-server   1/1     1            0           32s
+   metrics-server   1/1     1            1           32s
    ```
 
 ## Deploy zkevm-chain
