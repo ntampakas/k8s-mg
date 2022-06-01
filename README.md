@@ -1,4 +1,4 @@
-# zkevm-chain in k8s
+# zkevm-chain in k8s (non prod version)
 ## Deploy zkevm-chain + support services to kubernetes cluster
 
 ## Deploy EFS storage class, persistent volume claim, and persistent volume
@@ -23,8 +23,16 @@
      geth.toml                 l1-genesis-template.json  params
      init.sh                   l2-genesis-template.json
      root@lptp:/home/lptp/repos/k8s-mg# kubectl delete -f aux/efs-pod.yaml
-
      ```
+     
+## Deploy metrics server
+   ```
+   root@lptp:/home/lptp/repos/k8s-mg# kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+   # kubectl get deployment metrics-server -n kube-system
+   NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+   metrics-server   1/1     1            0           32s
+   # 
+   ```
 
 ## Deploy zkevm-chain
    ```
